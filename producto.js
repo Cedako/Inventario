@@ -1,6 +1,6 @@
 export default class Producto{
     constructor(id, name, quantity, cost){
-        this._id = id;
+        this._id = Number (id);
         this._name = name;
         this._quantity = Number(quantity);
         this._cost = Number(cost);

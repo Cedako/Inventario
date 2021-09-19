@@ -7,10 +7,14 @@ class App{
        let btnAdd = document.querySelector("#btnAdd");
        let btnShowAll = document.querySelector("#showAll");
        let btnShowInverse = document.querySelector("#showInverse");
+       let btnSrch = document.querySelector("#btnSrch");
+       let btnDel = document.querySelector("#btnDel");
+       let btnAddPrdPos = document.querySelector("#addPrdPos")
         //funcionalidad de botones
        btnAdd.addEventListener("click", this._addProduct)
        btnShowAll.addEventListener("click", this._showAll)
        btnShowInverse.addEventListener("click",this._showInverse)
+       btnSrch.addEventListener("click",  this._search)
 
        this._inventario = new Inventario();
     }
@@ -20,6 +24,9 @@ class App{
     }
     _showInverse = () => {
         this._inventario.showInverse();
+    }
+    _search = () => {
+        this._inventario.search();
     }
 
     _addProduct = () => {
