@@ -129,7 +129,7 @@ export default class Inventario{
             colCost.innerHTML = this._inventario[pos].getCost();
             colTotal.innerHTML = this._inventario[pos].getTotal();
 
-            let k = 1
+            let k = pos+1
             for(let i = pos; i<this._inventario.length-1; i++,k++){
                 console.log(this._inventario)
                 let temp = this._inventario[i];
