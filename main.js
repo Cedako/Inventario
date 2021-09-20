@@ -15,6 +15,7 @@ class App{
        btnShowAll.addEventListener("click", this._showAll)
        btnShowInverse.addEventListener("click",this._showInverse)
        btnSrch.addEventListener("click",  this._search)
+       btnDel.addEventListener("click", this._delete)
 
        this._inventario = new Inventario();
     }
@@ -27,6 +28,9 @@ class App{
     }
     _search = () => {
         this._inventario.search();
+    }
+    _delete = () => {
+        this._inventario.delete();
     }
 
     _addProduct = () => {
@@ -44,8 +48,10 @@ class App{
             return;
         }
 
-        alert("Se ha añadido el producto al inventario")
-        return;
+        else if(added === true){
+            alert("Se ha añadido el producto al inventario")
+            return;
+        }
     }
 
     
