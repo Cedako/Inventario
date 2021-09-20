@@ -13,7 +13,7 @@ export default class Inventario{
             }
             else{
                 this._inventario.push(product);
-                console.log(this._inventario);
+                console.log(this._inventario.length);
                 return true;
             }
         }
@@ -24,14 +24,13 @@ export default class Inventario{
 
     //Encontrar el producto en el vector
     _find(product){
-        let pos = this._inventario.findIndex((p) => {
-            if(p.getId() === product.getId()){
-                return true;
+        let pos = -1
+        for(let i=0; i<this._inventario.length; i++){
+            let s = this._inventario[i].getId()
+            if(s == product.getId()){
+                pos = i;
             }
-            else{
-                return false;
-            }
-        });
+        }
         return pos;
     }
 
@@ -145,6 +144,38 @@ export default class Inventario{
         }
         else{
             return alert("El articulo que desea eliminar no existe.");
+        }
+    }
+    addProductPosition(product){
+        if(this._inventario.length<20){
+            let pos = this._find(product);
+            if (pos>=0){
+                return false;
+            }
+            else{
+
+                let inPos = document.querySelector("#prdPosition")
+                let pos = inPos.value;
+                if(pos > (this._inventario.length + 1)){
+                    return alert("Esa posición no está disponible.")
+                }
+                this._inventario.push(product);
+                let j = (this._inventario.length)-1
+                let k = (this._inventario.length)-2;
+
+                for(let i=j; i>pos-1; i--,k--){
+                    let temp = this._inventario[k];
+                    this._inventario[k] = this._inventario[i]
+                    this._inventario[i] = temp;
+                }
+                
+                console.log(this._inventario);
+                inPos.value = "";
+                return true;
+            }
+        }
+        else{
+            return alert("El inventario está lleno.")
         }
     }
 }
