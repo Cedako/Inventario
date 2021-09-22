@@ -34,7 +34,7 @@ class App{
         this._inventario.delete();
     }
     _addProductPos = () => {
-        let product = Producto.readForm();
+        let product = this.readForm();
 
         if(!product){
             alert("Todos los campos son requeridos")
@@ -55,7 +55,7 @@ class App{
     }
 
     _addProduct = () => {
-        let product = Producto.readForm();
+        let product = this.readForm();
 
         if(!product){
             alert("Todos los campos son requeridos")
@@ -75,6 +75,29 @@ class App{
         }
     }
 
+    readForm () {
+        let inId = document.querySelector("#id");
+        let inName = document.querySelector("#name");
+        let inQuantity = document.querySelector("#quantity");
+        let inCost = document.querySelector("#cost");
+
+        let id = inId.value;
+        let name = inName.value;
+        let quantity = inQuantity.value;
+        let cost = inCost.value;
+        
+        if(id && name && quantity && cost){
+            inId.value = "";
+            inName.value = "";
+            inQuantity.value = "";
+            inCost.value = "";
+
+            return new Producto(id,name,quantity,cost);
+        }
+        else{
+            return false;
+        }
+    }
     
 }
 new App;
