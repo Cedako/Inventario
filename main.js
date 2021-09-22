@@ -18,7 +18,8 @@ class App{
        btnDel.addEventListener("click", this._delete)
        btnAddPrdPos.addEventListener("click", this._addProductPos)
 
-       this._inventario = new Inventario();
+       this._table = document.querySelector("#table");
+       this._inventario = new Inventario(this._table);
     }
 
     _showAll = () => {
@@ -28,10 +29,12 @@ class App{
         this._inventario.showInverse();
     }
     _search = () => {
-        this._inventario.search();
+        let inId = document.querySelector("#srchId");
+        this._inventario.search(inId);
     }
     _delete = () => {
-        this._inventario.delete();
+        let inId = document.querySelector("#delId");
+        this._inventario.delete(inId);
     }
     _addProductPos = () => {
         let product = this.readForm();
@@ -41,7 +44,8 @@ class App{
             return;
         }
 
-        let added = this._inventario.addProductPosition(product);
+        let inPos = document.querySelector("#prdPosition")
+        let added = this._inventario.addProductPosition(product,inPos);
 
         if(added === false){
             alert("El producto ya se encuentra en el inventario")

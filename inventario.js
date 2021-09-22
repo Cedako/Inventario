@@ -1,7 +1,7 @@
 export default class Inventario{
-    constructor(){
+    constructor(table){
         this._inventario = new Array();
-        this._table = document.querySelector("#table");
+        this._table = table
     }
 
     //añadir producto al vector
@@ -70,8 +70,8 @@ export default class Inventario{
             colTotal.innerHTML = this._inventario[i].getTotal();
         }
     }
-    search(){
-        let inId = document.querySelector("#srchId");
+    search(inId){
+        
         let id = inId.value;
         let pos = -1
         for(let i=0; i<this._inventario.length; i++){
@@ -103,8 +103,8 @@ export default class Inventario{
             return alert("El articulo que busca no existe.");
         }
     }
-    delete(){
-        let inId = document.querySelector("#delId");
+    delete(inId){
+        
         let id = inId.value;
         let pos = -1
         for(let i=0; i<this._inventario.length; i++){
@@ -146,7 +146,7 @@ export default class Inventario{
             return alert("El articulo que desea eliminar no existe.");
         }
     }
-    addProductPosition(product){
+    addProductPosition(product,inPos){
         if(this._inventario.length<20){
             let pos = this._find(product);
             if (pos>=0){
@@ -154,7 +154,7 @@ export default class Inventario{
             }
             else{
 
-                let inPos = document.querySelector("#prdPosition")
+                
                 let pos = inPos.value;
                 if(pos > (this._inventario.length + 1)){
                     return alert("Esa posición no está disponible.")
